@@ -6,6 +6,7 @@ import WholesalePricing from "@/components/shared/WholesalePricing/WholesalePric
 import DailyMedications from "@/components/shared/DailyMedications/DailyMedications";
 import Testimonials from "@/components/shared/Testimonials/Testimonials";
 import FAQ from "@/components/shared/FAQ/FAQ";
+import ProviderCTA from "@/components/shared/ProviderCTA/ProviderCTA";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <DailyMedications />
       <Testimonials />
       <FAQ />
+      <ProviderCTA />
     </>
   );
 }
