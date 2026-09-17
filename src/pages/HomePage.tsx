@@ -1,3 +1,9 @@
+import Hero from "@/components/shared/Hero/Hero";
+
 export default function HomePage() {
-  return <h1>Generic Drug</h1>
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }
