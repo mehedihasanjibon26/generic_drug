@@ -4,6 +4,7 @@ import ProductDeals from "@/components/shared/ProductDeals/ProductDeals";
 import HowItWorks from "@/components/shared/HowItWorks/HowItWorks";
 import WholesalePricing from "@/components/shared/WholesalePricing/WholesalePricing";
 import DailyMedications from "@/components/shared/DailyMedications/DailyMedications";
+import Testimonials from "@/components/shared/Testimonials/Testimonials";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <HowItWorks />
       <WholesalePricing />
       <DailyMedications />
+      <Testimonials />
     </>
   );
 }
