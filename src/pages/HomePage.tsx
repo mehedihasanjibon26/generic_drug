@@ -3,6 +3,7 @@ import CategoryBrowser from "@/components/shared/CategoryBrowser/CategoryBrowser
 import ProductDeals from "@/components/shared/ProductDeals/ProductDeals";
 import HowItWorks from "@/components/shared/HowItWorks/HowItWorks";
 import WholesalePricing from "@/components/shared/WholesalePricing/WholesalePricing";
+import DailyMedications from "@/components/shared/DailyMedications/DailyMedications";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <ProductDeals />
       <HowItWorks />
       <WholesalePricing />
+      <DailyMedications />
     </>
   );
 }
