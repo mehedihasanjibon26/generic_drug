@@ -1,15 +1,36 @@
 import { Search, ShoppingBag, Truck, UserRound } from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
 
-const navItems = ["Home", "Medications", "About Us", "Blog", "Contact Us"];
+const navItems = [
+  {
+    label: "Home",
+    path: "/",
+  },
+  {
+    label: "Medications",
+    path: "/medications",
+  },
+  {
+    label: "About Us",
+    path: "#",
+  },
+  {
+    label: "Blog",
+    path: "#",
+  },
+  {
+    label: "Contact Us",
+    path: "#",
+  },
+];
 
 function BrandLogo() {
   return (
-    <a
-      href="/"
+    <Link
+      to="/"
       aria-label="GenericDrug Home"
       className="flex shrink-0 items-center gap-[9px]"
     >
-      {/* Medical cross mark */}
       <svg
         width="35"
         height="35"
@@ -46,7 +67,7 @@ function BrandLogo() {
 
         <span className="text-[29px] font-normal text-[#075A69]">Drug</span>
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -66,25 +87,66 @@ export default function Header() {
 
       {/* Main navigation */}
       <div className="bg-[#F3F6F7]">
-        <div className="mx-auto flex h-[103px] w-full max-w-[1588px] items-center px-[44px]">
+        <div
+          className="
+            relative
+            mx-auto
+            flex h-[103px]
+            w-full max-w-[1588px]
+            items-center
+            px-[44px]
+          "
+        >
           <BrandLogo />
 
           {/* Navigation */}
-          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-[36px] lg:flex">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={item === "Home" ? "/" : "#"}
-                className={[
-                  "whitespace-nowrap text-[17px] leading-none transition-colors",
-                  item === "Home"
-                    ? "font-bold text-[#293437]"
-                    : "font-normal text-[#5D6669] hover:text-[#075C6C]",
-                ].join(" ")}
-              >
-                {item}
-              </a>
-            ))}
+          <nav
+            className="
+              absolute left-1/2
+              hidden -translate-x-1/2
+              items-center gap-[36px]
+              lg:flex
+            "
+          >
+            {navItems.map((item) => {
+              if (item.path === "#") {
+                return (
+                  <a
+                    key={item.label}
+                    href="#"
+                    className="
+                      whitespace-nowrap
+                      text-[17px]
+                      font-normal
+                      leading-none
+                      text-[#5D6669]
+                      transition-colors
+                      hover:text-[#075C6C]
+                    "
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+
+              return (
+                <NavLink
+                  key={item.label}
+                  to={item.path}
+                  end={item.path === "/"}
+                  className={({ isActive }) =>
+                    [
+                      "whitespace-nowrap text-[17px] leading-none transition-colors",
+                      isActive
+                        ? "font-bold text-[#293437]"
+                        : "font-normal text-[#5D6669] hover:text-[#075C6C]",
+                    ].join(" ")
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              );
+            })}
           </nav>
 
           {/* Actions */}
@@ -92,7 +154,12 @@ export default function Header() {
             <button
               type="button"
               aria-label="Search"
-              className="flex h-[38px] w-[38px] items-center justify-center transition-colors hover:text-[#08A9D9]"
+              className="
+                flex h-[38px] w-[38px]
+                items-center justify-center
+                transition-colors
+                hover:text-[#08A9D9]
+              "
             >
               <Search size={29} strokeWidth={1.65} />
             </button>
@@ -100,7 +167,12 @@ export default function Header() {
             <button
               type="button"
               aria-label="Account"
-              className="flex h-[38px] w-[38px] items-center justify-center transition-colors hover:text-[#08A9D9]"
+              className="
+                flex h-[38px] w-[38px]
+                items-center justify-center
+                transition-colors
+                hover:text-[#08A9D9]
+              "
             >
               <UserRound size={29} strokeWidth={1.65} />
             </button>
@@ -108,7 +180,12 @@ export default function Header() {
             <button
               type="button"
               aria-label="Shopping bag"
-              className="flex h-[38px] w-[38px] items-center justify-center transition-colors hover:text-[#08A9D9]"
+              className="
+                flex h-[38px] w-[38px]
+                items-center justify-center
+                transition-colors
+                hover:text-[#08A9D9]
+              "
             >
               <ShoppingBag size={28} strokeWidth={1.65} />
             </button>
