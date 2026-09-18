@@ -7,6 +7,7 @@ import {
   Search,
   Star,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import tyrosineImage from "@/assets/images/products/tyrosine.png";
 import nitrileGlovesImage from "@/assets/images/products/nitrile-gloves.png";
@@ -14,6 +15,7 @@ import amberVitaminsImage from "@/assets/images/products/amber-vitamins.png";
 
 type Product = {
   id: number;
+  slug: string;
   category: string;
   name: string;
   image: string;
@@ -26,6 +28,7 @@ type Product = {
 const products: Product[] = [
   {
     id: 1,
+    slug: "n-acetyl-l-tyrosine",
     category: "Nutrition",
     name: "Dietary Supplement Health Products",
     image: tyrosineImage,
@@ -35,6 +38,7 @@ const products: Product[] = [
   },
   {
     id: 2,
+    slug: "nitrile-disposable-gloves-100",
     category: "Healthcare",
     name: "Nitrile Disposable gloves 100",
     image: nitrileGlovesImage,
@@ -43,6 +47,7 @@ const products: Product[] = [
   },
   {
     id: 3,
+    slug: "womens-multi-vitamins",
     category: "Medicine",
     name: "Womens multi Vitamins A, Biotin- cranberry",
     image: amberVitaminsImage,
@@ -50,9 +55,9 @@ const products: Product[] = [
     oldPrice: 80,
     discount: "50% Off",
   },
-
   {
     id: 4,
+    slug: "nitrile-disposable-gloves-100",
     category: "Healthcare",
     name: "Nitrile Disposable gloves 100",
     image: nitrileGlovesImage,
@@ -61,6 +66,7 @@ const products: Product[] = [
   },
   {
     id: 5,
+    slug: "n-acetyl-l-tyrosine",
     category: "Nutrition",
     name: "Dietary Supplement Health Products",
     image: tyrosineImage,
@@ -70,6 +76,7 @@ const products: Product[] = [
   },
   {
     id: 6,
+    slug: "womens-multi-vitamins",
     category: "Medicine",
     name: "Womens multi Vitamins A, Biotin- cranberry",
     image: amberVitaminsImage,
@@ -77,9 +84,9 @@ const products: Product[] = [
     oldPrice: 80,
     discount: "50% Off",
   },
-
   {
     id: 7,
+    slug: "n-acetyl-l-tyrosine",
     category: "Nutrition",
     name: "Dietary Supplement Health Products",
     image: tyrosineImage,
@@ -89,6 +96,7 @@ const products: Product[] = [
   },
   {
     id: 8,
+    slug: "womens-multi-vitamins",
     category: "Medicine",
     name: "Womens multi Vitamins A, Biotin- cranberry",
     image: amberVitaminsImage,
@@ -98,15 +106,16 @@ const products: Product[] = [
   },
   {
     id: 9,
+    slug: "nitrile-disposable-gloves-100",
     category: "Healthcare",
     name: "Nitrile Disposable gloves 100",
     image: nitrileGlovesImage,
     price: 140,
     highlighted: true,
   },
-
   {
     id: 10,
+    slug: "n-acetyl-l-tyrosine",
     category: "Nutrition",
     name: "Dietary Supplement Health Products",
     image: tyrosineImage,
@@ -116,6 +125,7 @@ const products: Product[] = [
   },
   {
     id: 11,
+    slug: "nitrile-disposable-gloves-100",
     category: "Healthcare",
     name: "Nitrile Disposable gloves 100",
     image: nitrileGlovesImage,
@@ -124,6 +134,7 @@ const products: Product[] = [
   },
   {
     id: 12,
+    slug: "womens-multi-vitamins",
     category: "Medicine",
     name: "Womens multi Vitamins A, Biotin- cranberry",
     image: amberVitaminsImage,
@@ -189,7 +200,6 @@ export default function MedicationProductListing() {
         gap-[32px]
       "
     >
-      {/* Cards + Header */}
       <div
         className="
           flex w-full
@@ -287,7 +297,6 @@ export default function MedicationProductListing() {
                 items-center
                 justify-center
                 rounded-full
-                border-l border-[#E0E6E9]
                 text-[#5B676D]
               "
             >
@@ -390,7 +399,7 @@ export default function MedicationProductListing() {
           </div>
         </div>
 
-        {/* Products */}
+        {/* Product Grid */}
         <div
           className={
             view === "grid"
@@ -533,7 +542,10 @@ function ProductCard({ product, listView, added, onCart }: ProductCardProps) {
         </span>
       )}
 
-      <div
+      {/* IMAGE -> DETAILS PAGE */}
+      <Link
+        to={`/medications/${product.slug}`}
+        aria-label={`View ${product.name}`}
         className={
           listView
             ? "flex h-[220px] w-[310px] shrink-0 items-center justify-center"
@@ -547,9 +559,12 @@ function ProductCard({ product, listView, added, onCart }: ProductCardProps) {
             max-h-[205px]
             max-w-[220px]
             object-contain
+            transition-transform
+            duration-300
+            hover:scale-[1.04]
           "
         />
-      </div>
+      </Link>
 
       <div
         className={`
@@ -584,19 +599,24 @@ function ProductCard({ product, listView, added, onCart }: ProductCardProps) {
           </span>
         </div>
 
-        <h3
-          className="
-            mt-[8px]
-            min-h-[42px]
-            max-w-[235px]
-            text-[15px]
-            font-medium
-            leading-[1.25]
-            text-[#00516B]
-          "
-        >
-          {product.name}
-        </h3>
+        {/* NAME -> DETAILS PAGE */}
+        <Link to={`/medications/${product.slug}`} className="block">
+          <h3
+            className="
+              mt-[8px]
+              min-h-[42px]
+              max-w-[235px]
+              text-[15px]
+              font-medium
+              leading-[1.25]
+              text-[#00516B]
+              transition-colors
+              hover:text-[#08A9DF]
+            "
+          >
+            {product.name}
+          </h3>
+        </Link>
 
         <div
           className="
