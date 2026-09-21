@@ -6,7 +6,7 @@ const navItems = [
   { label: "Medications", path: "/medications" },
   { label: "About Us", path: "/about-us" },
   { label: "Blog", path: "#" },
-  { label: "Contact Us", path: "#" },
+  { label: "Contact Us", path: "/contact-us" },
 ];
 
 function BrandLogo() {
@@ -59,15 +59,7 @@ function BrandLogo() {
 export default function Header() {
   return (
     <header className="w-full">
-      <div
-        className="
-          flex h-[46px]
-          w-full
-          items-center
-          justify-center
-          bg-[#075C6C]
-        "
-      >
+      <div className="flex h-[46px] w-full items-center justify-center bg-[#075C6C]">
         <div className="flex items-center gap-[11px] text-white">
           <Truck size={21} strokeWidth={1.8} />
 
@@ -78,45 +70,17 @@ export default function Header() {
       </div>
 
       <div className="bg-[#F3F6F7]">
-        <div
-          className="
-            relative
-            mx-auto
-            flex h-[103px]
-            w-full
-            max-w-[1588px]
-            items-center
-            px-[44px]
-          "
-        >
+        <div className="relative mx-auto flex h-[103px] w-full max-w-[1588px] items-center px-[44px]">
           <BrandLogo />
 
-          <nav
-            className="
-              absolute
-              left-1/2
-              hidden
-              -translate-x-1/2
-              items-center
-              gap-[36px]
-              lg:flex
-            "
-          >
+          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-[36px] lg:flex">
             {navItems.map((item) => {
               if (item.path === "#") {
                 return (
                   <a
                     key={item.label}
                     href="#"
-                    className="
-                      whitespace-nowrap
-                      text-[17px]
-                      font-normal
-                      leading-none
-                      text-[#5D6669]
-                      transition-colors
-                      hover:text-[#075C6C]
-                    "
+                    className="whitespace-nowrap text-[17px] font-normal leading-none text-[#5D6669] transition-colors hover:text-[#075C6C]"
                   >
                     {item.label}
                   </a>
@@ -147,14 +111,7 @@ export default function Header() {
             <button
               type="button"
               aria-label="Search"
-              className="
-                flex h-[38px]
-                w-[38px]
-                items-center
-                justify-center
-                transition-colors
-                hover:text-[#08A9D9]
-              "
+              className="flex h-[38px] w-[38px] items-center justify-center transition-colors hover:text-[#08A9D9]"
             >
               <Search size={29} strokeWidth={1.65} />
             </button>
@@ -162,14 +119,7 @@ export default function Header() {
             <button
               type="button"
               aria-label="Account"
-              className="
-                flex h-[38px]
-                w-[38px]
-                items-center
-                justify-center
-                transition-colors
-                hover:text-[#08A9D9]
-              "
+              className="flex h-[38px] w-[38px] items-center justify-center transition-colors hover:text-[#08A9D9]"
             >
               <UserRound size={29} strokeWidth={1.65} />
             </button>
@@ -177,14 +127,7 @@ export default function Header() {
             <button
               type="button"
               aria-label="Shopping bag"
-              className="
-                flex h-[38px]
-                w-[38px]
-                items-center
-                justify-center
-                transition-colors
-                hover:text-[#08A9D9]
-              "
+              className="flex h-[38px] w-[38px] items-center justify-center transition-colors hover:text-[#08A9D9]"
             >
               <ShoppingBag size={28} strokeWidth={1.65} />
             </button>
