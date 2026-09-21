@@ -2,26 +2,11 @@ import { Search, ShoppingBag, Truck, UserRound } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 
 const navItems = [
-  {
-    label: "Home",
-    path: "/",
-  },
-  {
-    label: "Medications",
-    path: "/medications",
-  },
-  {
-    label: "About Us",
-    path: "#",
-  },
-  {
-    label: "Blog",
-    path: "#",
-  },
-  {
-    label: "Contact Us",
-    path: "#",
-  },
+  { label: "Home", path: "/" },
+  { label: "Medications", path: "/medications" },
+  { label: "About Us", path: "/about-us" },
+  { label: "Blog", path: "#" },
+  { label: "Contact Us", path: "#" },
 ];
 
 function BrandLogo() {
@@ -74,8 +59,15 @@ function BrandLogo() {
 export default function Header() {
   return (
     <header className="w-full">
-      {/* Top shipping strip */}
-      <div className="flex h-[46px] w-full items-center justify-center bg-[#075C6C]">
+      <div
+        className="
+          flex h-[46px]
+          w-full
+          items-center
+          justify-center
+          bg-[#075C6C]
+        "
+      >
         <div className="flex items-center gap-[11px] text-white">
           <Truck size={21} strokeWidth={1.8} />
 
@@ -85,26 +77,28 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main navigation */}
       <div className="bg-[#F3F6F7]">
         <div
           className="
             relative
             mx-auto
             flex h-[103px]
-            w-full max-w-[1588px]
+            w-full
+            max-w-[1588px]
             items-center
             px-[44px]
           "
         >
           <BrandLogo />
 
-          {/* Navigation */}
           <nav
             className="
-              absolute left-1/2
-              hidden -translate-x-1/2
-              items-center gap-[36px]
+              absolute
+              left-1/2
+              hidden
+              -translate-x-1/2
+              items-center
+              gap-[36px]
               lg:flex
             "
           >
@@ -149,14 +143,15 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Actions */}
           <div className="ml-auto flex items-center gap-[25px] text-[#444D50]">
             <button
               type="button"
               aria-label="Search"
               className="
-                flex h-[38px] w-[38px]
-                items-center justify-center
+                flex h-[38px]
+                w-[38px]
+                items-center
+                justify-center
                 transition-colors
                 hover:text-[#08A9D9]
               "
@@ -168,8 +163,10 @@ export default function Header() {
               type="button"
               aria-label="Account"
               className="
-                flex h-[38px] w-[38px]
-                items-center justify-center
+                flex h-[38px]
+                w-[38px]
+                items-center
+                justify-center
                 transition-colors
                 hover:text-[#08A9D9]
               "
@@ -181,8 +178,10 @@ export default function Header() {
               type="button"
               aria-label="Shopping bag"
               className="
-                flex h-[38px] w-[38px]
-                items-center justify-center
+                flex h-[38px]
+                w-[38px]
+                items-center
+                justify-center
                 transition-colors
                 hover:text-[#08A9D9]
               "
