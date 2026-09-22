@@ -1,12 +1,30 @@
+import { useState } from "react";
 import { Search, ShoppingBag, Truck, UserRound } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 
+import CartDrawer from "@/components/cart/CartDrawer/CartDrawer";
+
 const navItems = [
-  { label: "Home", path: "/" },
-  { label: "Medications", path: "/medications" },
-  { label: "About Us", path: "/about-us" },
-  { label: "Blog", path: "#" },
-  { label: "Contact Us", path: "/contact-us" },
+  {
+    label: "Home",
+    path: "/",
+  },
+  {
+    label: "Medications",
+    path: "/medications",
+  },
+  {
+    label: "About Us",
+    path: "/about-us",
+  },
+  {
+    label: "Blog",
+    path: "/blog",
+  },
+  {
+    label: "Contact Us",
+    path: "/contact-us",
+  },
 ];
 
 function BrandLogo() {
@@ -57,37 +75,73 @@ function BrandLogo() {
 }
 
 export default function Header() {
+  const [cartOpen, setCartOpen] = useState(false);
+
   return (
-    <header className="w-full">
-      <div className="flex h-[46px] w-full items-center justify-center bg-[#075C6C]">
-        <div className="flex items-center gap-[11px] text-white">
-          <Truck size={21} strokeWidth={1.8} />
+    <>
+      <header className="w-full">
+        {/* Shipping bar */}
+        <div
+          className="
+            flex
+            h-[46px]
+            w-full
+            items-center
+            justify-center
+            bg-[#075C6C]
+          "
+        >
+          <div
+            className="
+              flex
+              items-center
+              gap-[11px]
+              text-white
+            "
+          >
+            <Truck size={21} strokeWidth={1.8} />
 
-          <p className="text-[17px] font-normal leading-none tracking-[-0.15px]">
-            FREE SHIPPING FOR MONTHLY PACK VALUED OVER $30
-          </p>
+            <p
+              className="
+                text-[17px]
+                font-normal
+                leading-none
+                tracking-[-0.15px]
+              "
+            >
+              FREE SHIPPING FOR MONTHLY PACK VALUED OVER $30
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="bg-[#F3F6F7]">
-        <div className="relative mx-auto flex h-[103px] w-full max-w-[1588px] items-center px-[44px]">
-          <BrandLogo />
+        {/* Main navigation */}
+        <div className="bg-[#F3F6F7]">
+          <div
+            className="
+              relative
+              mx-auto
+              flex
+              h-[103px]
+              w-full
+              max-w-[1588px]
+              items-center
+              px-[44px]
+            "
+          >
+            <BrandLogo />
 
-          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-[36px] lg:flex">
-            {navItems.map((item) => {
-              if (item.path === "#") {
-                return (
-                  <a
-                    key={item.label}
-                    href="#"
-                    className="whitespace-nowrap text-[17px] font-normal leading-none text-[#5D6669] transition-colors hover:text-[#075C6C]"
-                  >
-                    {item.label}
-                  </a>
-                );
-              }
-
-              return (
+            <nav
+              className="
+                absolute
+                left-1/2
+                hidden
+                -translate-x-1/2
+                items-center
+                gap-[36px]
+                lg:flex
+              "
+            >
+              {navItems.map((item) => (
                 <NavLink
                   key={item.label}
                   to={item.path}
@@ -103,37 +157,72 @@ export default function Header() {
                 >
                   {item.label}
                 </NavLink>
-              );
-            })}
-          </nav>
+              ))}
+            </nav>
 
-          <div className="ml-auto flex items-center gap-[25px] text-[#444D50]">
-            <button
-              type="button"
-              aria-label="Search"
-              className="flex h-[38px] w-[38px] items-center justify-center transition-colors hover:text-[#08A9D9]"
+            <div
+              className="
+                ml-auto
+                flex
+                items-center
+                gap-[25px]
+                text-[#444D50]
+              "
             >
-              <Search size={29} strokeWidth={1.65} />
-            </button>
+              <button
+                type="button"
+                aria-label="Search"
+                className="
+                  flex
+                  h-[38px]
+                  w-[38px]
+                  items-center
+                  justify-center
+                  transition-colors
+                  hover:text-[#08A9D9]
+                "
+              >
+                <Search size={29} strokeWidth={1.65} />
+              </button>
 
-            <button
-              type="button"
-              aria-label="Account"
-              className="flex h-[38px] w-[38px] items-center justify-center transition-colors hover:text-[#08A9D9]"
-            >
-              <UserRound size={29} strokeWidth={1.65} />
-            </button>
+              <button
+                type="button"
+                aria-label="Account"
+                className="
+                  flex
+                  h-[38px]
+                  w-[38px]
+                  items-center
+                  justify-center
+                  transition-colors
+                  hover:text-[#08A9D9]
+                "
+              >
+                <UserRound size={29} strokeWidth={1.65} />
+              </button>
 
-            <button
-              type="button"
-              aria-label="Shopping bag"
-              className="flex h-[38px] w-[38px] items-center justify-center transition-colors hover:text-[#08A9D9]"
-            >
-              <ShoppingBag size={28} strokeWidth={1.65} />
-            </button>
+              <button
+                type="button"
+                aria-label="Shopping bag"
+                onClick={() => setCartOpen(true)}
+                className="
+                  flex
+                  h-[38px]
+                  w-[38px]
+                  items-center
+                  justify-center
+                  transition-colors
+                  hover:text-[#08A9D9]
+                "
+              >
+                <ShoppingBag size={28} strokeWidth={1.65} />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+    </>
   );
 }

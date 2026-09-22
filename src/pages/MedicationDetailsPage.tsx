@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import MedicationDetailsBreadcrumb from "@/components/medication-details/MedicationDetailsBreadcrumb/MedicationDetailsBreadcrumb";
@@ -15,7 +16,7 @@ const medications = {
     name: "N-Acetyl L-Tyrosine",
     subtitle: "Dietary Supplement · 60 capsules",
     description:
-      "A dietary supplement product designed for everyday nutritional support. Product information, dosage and usage instructions can be shown here based on the selected medication.",
+      "A dietary supplement product designed for everyday nutritional support.",
     image: tyrosineImage,
     price: 64,
     oldPrice: 80,
@@ -25,7 +26,7 @@ const medications = {
     reviewCount: 126,
 
     overviewDescription:
-      "N-Acetyl L-Tyrosine is a dietary supplement commonly used as part of everyday nutritional support. Usage instructions and duration should follow the information provided with the product.",
+      "N-Acetyl L-Tyrosine is a dietary supplement commonly used as part of everyday nutritional support.",
     genericName: "N-Acetyl L-Tyrosine",
     strength: "350 mg",
     form: "Capsule",
@@ -40,7 +41,7 @@ const medications = {
     name: "Nitrile Disposable gloves 100",
     subtitle: "Healthcare · Disposable gloves",
     description:
-      "Disposable nitrile gloves suitable for everyday healthcare and protective use. Product specifications and package information can be loaded dynamically for this item.",
+      "Disposable nitrile gloves suitable for everyday healthcare and protective use.",
     image: nitrileGlovesImage,
     price: 140,
     packLabel: "100 pcs",
@@ -48,7 +49,7 @@ const medications = {
     reviewCount: 98,
 
     overviewDescription:
-      "Disposable nitrile gloves designed for healthcare, hygiene and general protective use. Product specifications may vary according to packaging and manufacturer.",
+      "Disposable nitrile gloves designed for healthcare, hygiene and general protective use.",
     genericName: "Nitrile Disposable Gloves",
     strength: "Standard",
     form: "Disposable glove",
@@ -63,7 +64,7 @@ const medications = {
     name: "Womens multi Vitamins A, Biotin- cranberry",
     subtitle: "Medicine · Daily vitamins",
     description:
-      "A daily multivitamin product with vitamin and nutritional support. Full product information will come from the medicine record when the backend is connected.",
+      "A daily multivitamin product with vitamin and nutritional support.",
     image: amberVitaminsImage,
     price: 64,
     oldPrice: 80,
@@ -73,7 +74,7 @@ const medications = {
     reviewCount: 114,
 
     overviewDescription:
-      "A daily multivitamin supplement formulated with vitamins and nutritional ingredients for routine dietary support.",
+      "A daily multivitamin supplement formulated with vitamins and nutritional ingredients.",
     genericName: "Multivitamin",
     strength: "Daily formula",
     form: "Tablet",
@@ -111,7 +112,7 @@ const medications = {
     name: "Atorvastatin 20 mg",
     subtitle: "Generic for Lipitor® · Oral tablets",
     description:
-      "A commonly prescribed statin used as part of a clinician-guided plan for cholesterol management. Available in flexible monthly supply options.",
+      "A commonly prescribed statin used as part of a clinician-guided plan for cholesterol management.",
     image: tyrosineImage,
     price: 24.95,
     oldPrice: 34.95,
@@ -121,7 +122,7 @@ const medications = {
     reviewCount: 126,
 
     overviewDescription:
-      "Atorvastatin is a prescription medicine commonly used alongside diet and lifestyle changes to help manage cholesterol. Your prescriber determines whether it is appropriate for you, including the dose and treatment duration.",
+      "Atorvastatin is a prescription medicine commonly used alongside diet and lifestyle changes to help manage cholesterol.",
     genericName: "Atorvastatin calcium",
     strength: "20 mg",
     form: "Oral tablet",
@@ -139,6 +140,13 @@ export default function MedicationDetailsPage() {
   const medication =
     medications[slug as keyof typeof medications] ??
     medications["n-acetyl-l-tyrosine"];
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [slug]);
 
   return (
     <div className="min-h-screen bg-[#F4F7F9]">
